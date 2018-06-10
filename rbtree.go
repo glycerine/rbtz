@@ -49,7 +49,7 @@ type Tree struct {
 }
 
 func (r *Tree) AddCtor(typename string, ctor func() interface{}) {
-	fmt.Printf("AddCtor called with typename '%s'\n", typename)
+	//fmt.Printf("AddCtor called with typename '%s'\n", typename)
 	if r.serzCtorMap == nil {
 		r.serzCtorMap = make(map[string]func() interface{})
 	}
@@ -57,7 +57,7 @@ func (r *Tree) AddCtor(typename string, ctor func() interface{}) {
 }
 
 func (r *Tree) KnownTypes() string {
-	if r.serzCtorMap == nil {
+	if r == nil || r.serzCtorMap == nil {
 		return ""
 	}
 	known := ""
@@ -68,7 +68,7 @@ func (r *Tree) KnownTypes() string {
 }
 
 func (r *Tree) NewValueAsInterface(zid int64, typename string) interface{} {
-	fmt.Printf("debug: rbtz.Tree.NewValueAsInterface called with typename '%s'.\n", typename)
+	//fmt.Printf("debug: rbtz.Tree.NewValueAsInterface called with typename '%s'.\n", typename)
 	ctor, ok := r.serzCtorMap[typename]
 	if ok {
 		return ctor()
@@ -89,7 +89,7 @@ type TreeSerz struct {
 }
 
 func (s *Tree) PreSaveHook() {
-	fmt.Printf("PreSaveHook called with known types= '%s'\n", s.KnownTypes())
+	//fmt.Printf("PreSaveHook called with known types= '%s'\n", s.KnownTypes())
 
 	if s == nil {
 		return
@@ -101,7 +101,7 @@ func (s *Tree) PreSaveHook() {
 }
 
 func (s *Tree) PostLoadHook() {
-	fmt.Printf("PostLoadHook called with known types= '%s'\n", s.KnownTypes())
+	//fmt.Printf("PostLoadHook called with known types= '%s'\n", s.KnownTypes())
 	if s == nil {
 		return
 	}
