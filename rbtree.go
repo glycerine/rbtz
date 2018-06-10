@@ -57,6 +57,9 @@ func (r *Tree) AddCtor(typename string, ctor func() interface{}) {
 }
 
 func (r *Tree) KnownTypes() string {
+	if r.serzCtorMap == nil {
+		return ""
+	}
 	known := ""
 	for typ := range r.serzCtorMap {
 		known += typ + ", "
