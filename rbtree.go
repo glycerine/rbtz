@@ -49,6 +49,9 @@ type Tree struct {
 }
 
 func (r *Tree) AddCtor(typename string, ctor func() interface{}) {
+	if r.serzCtorMap == nil {
+		r.serzCtorMap = make(map[string]func() interface{})
+	}
 	r.serzCtorMap[typename] = ctor
 }
 
