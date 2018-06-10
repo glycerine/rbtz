@@ -49,7 +49,7 @@ type Tree struct {
 }
 
 func (r *Tree) AddCtor(typename string, ctor func() interface{}) {
-	fmt.Printf("AddCtor called with typename '%s'", typename)
+	fmt.Printf("AddCtor called with typename '%s'\n", typename)
 	if r.serzCtorMap == nil {
 		r.serzCtorMap = make(map[string]func() interface{})
 	}
