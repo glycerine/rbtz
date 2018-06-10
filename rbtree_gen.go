@@ -21,7 +21,7 @@ func (z *Tree) DecodeMsg(dc *msgp.Reader) (err error) {
 
 	var field []byte
 	_ = field
-	const maxFields1zgensym_5a2f9927267bfa97_2 = 2
+	const maxFields1zgensym_5a2f9927267bfa97_2 = 1
 
 	// -- templateDecodeMsg starts here--
 	var totalEncodedFields1zgensym_5a2f9927267bfa97_2 uint32
@@ -213,9 +213,9 @@ doneWithStruct1zgensym_5a2f9927267bfa97_2:
 }
 
 // fields of Tree
-var decodeMsgFieldOrder1zgensym_5a2f9927267bfa97_2 = []string{"Serz_zid00_ptr", ""}
+var decodeMsgFieldOrder1zgensym_5a2f9927267bfa97_2 = []string{"Serz_zid00_ptr"}
 
-var decodeMsgFieldSkip1zgensym_5a2f9927267bfa97_2 = []bool{false, true}
+var decodeMsgFieldSkip1zgensym_5a2f9927267bfa97_2 = []bool{false}
 
 // fields of TreeSerz
 var decodeMsgFieldOrder3zgensym_5a2f9927267bfa97_4 = []string{"Elslice_zid00_slc"}
@@ -243,7 +243,7 @@ func (z *Tree) EncodeMsg(en *msgp.Writer) (err error) {
 	}
 
 	// honor the omitempty tags
-	var empty_zgensym_5a2f9927267bfa97_9 [2]bool
+	var empty_zgensym_5a2f9927267bfa97_9 [1]bool
 	fieldsInUse_zgensym_5a2f9927267bfa97_10 := z.fieldsNotEmpty(empty_zgensym_5a2f9927267bfa97_9[:])
 
 	// map header
@@ -348,7 +348,7 @@ func (z *Tree) MarshalMsg(b []byte) (o []byte, err error) {
 	o = msgp.Require(b, z.Msgsize())
 
 	// honor the omitempty tags
-	var empty [2]bool
+	var empty [1]bool
 	fieldsInUse := z.fieldsNotEmpty(empty[:])
 	o = msgp.AppendMapHeader(o, fieldsInUse)
 
@@ -400,7 +400,7 @@ func (z *Tree) UnmarshalMsgWithCfg(bts []byte, cfg *msgp.RuntimeConfig) (o []byt
 
 	var field []byte
 	_ = field
-	const maxFields13zgensym_5a2f9927267bfa97_14 = 2
+	const maxFields13zgensym_5a2f9927267bfa97_14 = 1
 
 	// -- templateUnmarshalMsg starts here--
 	var totalEncodedFields13zgensym_5a2f9927267bfa97_14 uint32
@@ -593,9 +593,9 @@ doneWithStruct13zgensym_5a2f9927267bfa97_14:
 }
 
 // fields of Tree
-var unmarshalMsgFieldOrder13zgensym_5a2f9927267bfa97_14 = []string{"Serz_zid00_ptr", ""}
+var unmarshalMsgFieldOrder13zgensym_5a2f9927267bfa97_14 = []string{"Serz_zid00_ptr"}
 
-var unmarshalMsgFieldSkip13zgensym_5a2f9927267bfa97_14 = []bool{false, true}
+var unmarshalMsgFieldSkip13zgensym_5a2f9927267bfa97_14 = []bool{false}
 
 // fields of TreeSerz
 var unmarshalMsgFieldOrder15zgensym_5a2f9927267bfa97_16 = []string{"Elslice_zid00_slc"}

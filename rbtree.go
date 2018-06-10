@@ -45,12 +45,16 @@ type Tree struct {
 	Serz *TreeSerz `zid:"0"`
 
 	// typename -> constructor
-	SerzCtorMap map[string]func() interface{}
+	serzCtorMap map[string]func() interface{}
+}
+
+func (r *Tree) AddCtor(typename string, ctor func() interface{}) {
+	r.serzCtorMap[typename] = ctor
 }
 
 func (r *Tree) NewValueAsInterface(zid int64, typename string) interface{} {
 	fmt.Printf("debug: NewValueAsInterface called with typename '%s'", typename)
-	ctor, ok := r.SerzCtorMap[typename]
+	ctor, ok := r.serzCtorMap[typename]
 	if ok {
 		return ctor()
 	}
