@@ -21,7 +21,7 @@ func (z *Tree) DecodeMsg(dc *msgp.Reader) (err error) {
 
 	var field []byte
 	_ = field
-	const maxFields1zgensym_5a2f9927267bfa97_2 = 1
+	const maxFields1zgensym_5a2f9927267bfa97_2 = 2
 
 	// -- templateDecodeMsg starts here--
 	var totalEncodedFields1zgensym_5a2f9927267bfa97_2 uint32
@@ -70,7 +70,7 @@ doneWithStruct1zgensym_5a2f9927267bfa97_2:
 		switch curField1zgensym_5a2f9927267bfa97_2 {
 		// -- templateDecodeMsg ends here --
 
-		case "Serz__ptr":
+		case "Serz_zid00_ptr":
 			found1zgensym_5a2f9927267bfa97_2[0] = true
 			if dc.IsNil() {
 				err = dc.ReadNil()
@@ -213,9 +213,9 @@ doneWithStruct1zgensym_5a2f9927267bfa97_2:
 }
 
 // fields of Tree
-var decodeMsgFieldOrder1zgensym_5a2f9927267bfa97_2 = []string{"Serz__ptr"}
+var decodeMsgFieldOrder1zgensym_5a2f9927267bfa97_2 = []string{"Serz_zid00_ptr", ""}
 
-var decodeMsgFieldSkip1zgensym_5a2f9927267bfa97_2 = []bool{false}
+var decodeMsgFieldSkip1zgensym_5a2f9927267bfa97_2 = []bool{false, true}
 
 // fields of TreeSerz
 var decodeMsgFieldOrder3zgensym_5a2f9927267bfa97_4 = []string{"Elslice_zid00_slc"}
@@ -243,7 +243,7 @@ func (z *Tree) EncodeMsg(en *msgp.Writer) (err error) {
 	}
 
 	// honor the omitempty tags
-	var empty_zgensym_5a2f9927267bfa97_9 [1]bool
+	var empty_zgensym_5a2f9927267bfa97_9 [2]bool
 	fieldsInUse_zgensym_5a2f9927267bfa97_10 := z.fieldsNotEmpty(empty_zgensym_5a2f9927267bfa97_9[:])
 
 	// map header
@@ -263,8 +263,8 @@ func (z *Tree) EncodeMsg(en *msgp.Writer) (err error) {
 	}
 
 	if !empty_zgensym_5a2f9927267bfa97_9[0] {
-		// write "Serz__ptr"
-		err = en.Append(0xa9, 0x53, 0x65, 0x72, 0x7a, 0x5f, 0x5f, 0x70, 0x74, 0x72)
+		// write "Serz_zid00_ptr"
+		err = en.Append(0xae, 0x53, 0x65, 0x72, 0x7a, 0x5f, 0x7a, 0x69, 0x64, 0x30, 0x30, 0x5f, 0x70, 0x74, 0x72)
 		if err != nil {
 			return err
 		}
@@ -348,13 +348,13 @@ func (z *Tree) MarshalMsg(b []byte) (o []byte, err error) {
 	o = msgp.Require(b, z.Msgsize())
 
 	// honor the omitempty tags
-	var empty [1]bool
+	var empty [2]bool
 	fieldsInUse := z.fieldsNotEmpty(empty[:])
 	o = msgp.AppendMapHeader(o, fieldsInUse)
 
 	if !empty[0] {
-		// string "Serz__ptr"
-		o = append(o, 0xa9, 0x53, 0x65, 0x72, 0x7a, 0x5f, 0x5f, 0x70, 0x74, 0x72)
+		// string "Serz_zid00_ptr"
+		o = append(o, 0xae, 0x53, 0x65, 0x72, 0x7a, 0x5f, 0x7a, 0x69, 0x64, 0x30, 0x30, 0x5f, 0x70, 0x74, 0x72)
 		// marshalGen.gPtr()
 
 		if z.Serz == nil {
@@ -400,7 +400,7 @@ func (z *Tree) UnmarshalMsgWithCfg(bts []byte, cfg *msgp.RuntimeConfig) (o []byt
 
 	var field []byte
 	_ = field
-	const maxFields13zgensym_5a2f9927267bfa97_14 = 1
+	const maxFields13zgensym_5a2f9927267bfa97_14 = 2
 
 	// -- templateUnmarshalMsg starts here--
 	var totalEncodedFields13zgensym_5a2f9927267bfa97_14 uint32
@@ -450,7 +450,7 @@ doneWithStruct13zgensym_5a2f9927267bfa97_14:
 		switch curField13zgensym_5a2f9927267bfa97_14 {
 		// -- templateUnmarshalMsg ends here --
 
-		case "Serz__ptr":
+		case "Serz_zid00_ptr":
 			found13zgensym_5a2f9927267bfa97_14[0] = true
 			// default gPtr logic.
 			if nbs.PeekNil(bts) && z.Serz == nil {
@@ -593,9 +593,9 @@ doneWithStruct13zgensym_5a2f9927267bfa97_14:
 }
 
 // fields of Tree
-var unmarshalMsgFieldOrder13zgensym_5a2f9927267bfa97_14 = []string{"Serz__ptr"}
+var unmarshalMsgFieldOrder13zgensym_5a2f9927267bfa97_14 = []string{"Serz_zid00_ptr", ""}
 
-var unmarshalMsgFieldSkip13zgensym_5a2f9927267bfa97_14 = []bool{false}
+var unmarshalMsgFieldSkip13zgensym_5a2f9927267bfa97_14 = []bool{false, true}
 
 // fields of TreeSerz
 var unmarshalMsgFieldOrder15zgensym_5a2f9927267bfa97_16 = []string{"Elslice_zid00_slc"}
@@ -604,7 +604,7 @@ var unmarshalMsgFieldSkip15zgensym_5a2f9927267bfa97_16 = []bool{false}
 
 // Msgsize returns an upper bound estimate of the number of bytes occupied by the serialized message
 func (z *Tree) Msgsize() (s int) {
-	s = 1 + 10
+	s = 1 + 15
 	if z.Serz == nil {
 		s += msgp.NilSize
 	} else {

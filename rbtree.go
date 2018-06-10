@@ -42,7 +42,19 @@ type Tree struct {
 	count   int
 	compare CompareFunc
 
-	Serz *TreeSerz
+	Serz *TreeSerz `zid:"0"`
+
+	// typename -> constructor
+	SerzCtorMap map[string]func() interface{}
+}
+
+func (r *Tree) NewValueAsInterface(zid int64, typename string) interface{} {
+	fmt.Printf("debug: NewValueAsInterface called with typename '%s'", typename)
+	ctor, ok := r.SerzCtorMap[typename]
+	if ok {
+		return ctor()
+	}
+	panic(fmt.Sprintf("unknown typename '%s'", typename))
 }
 
 // Reset leaves Serz in place, so we can read it.
@@ -58,6 +70,9 @@ type TreeSerz struct {
 }
 
 func (s *Tree) PreSaveHook() {
+	if s == nil {
+		return
+	}
 	s.Serz = &TreeSerz{}
 	for it := s.Min(); it != s.Limit(); it = it.Next() {
 		s.Serz.Elslice = append(s.Serz.Elslice, it.Item())
@@ -65,7 +80,13 @@ func (s *Tree) PreSaveHook() {
 }
 
 func (s *Tree) PostLoadHook() {
+	if s == nil {
+		return
+	}
 	s.Reset() // but don't touch the s.Serz
+	if s.Serz == nil {
+		return
+	}
 	for _, e := range s.Serz.Elslice {
 		s.Insert(e)
 	}
