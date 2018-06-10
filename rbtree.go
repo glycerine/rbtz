@@ -55,13 +55,21 @@ func (r *Tree) AddCtor(typename string, ctor func() interface{}) {
 	r.serzCtorMap[typename] = ctor
 }
 
+func (r *Tree) KnownTypes() string {
+	known := ""
+	for typ := range r.serzCtorMap {
+		known += typ + ", "
+	}
+	return known
+}
+
 func (r *Tree) NewValueAsInterface(zid int64, typename string) interface{} {
-	fmt.Printf("debug: NewValueAsInterface called with typename '%s'", typename)
+	fmt.Printf("debug: rbtz.Tree.NewValueAsInterface called with typename '%s'.\n", typename)
 	ctor, ok := r.serzCtorMap[typename]
 	if ok {
 		return ctor()
 	}
-	panic(fmt.Sprintf("unknown typename '%s'", typename))
+	panic(fmt.Sprintf("unknown typename '%s'. We know these only: '%s'\n", typename, r.KnownTypes()))
 }
 
 // Reset leaves Serz in place, so we can read it.
